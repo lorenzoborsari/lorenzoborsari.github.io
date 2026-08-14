@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorenzo Borsari — Legal Counsel &amp; Redattore Editoriale</title>
+<meta name="description" content="Lorenzo Borsari — Legal Counsel presso San Marino Innovation, redattore editoriale freelance, già docente. Diritto, editoria, insegnamento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --bg-alt:#F5F6F8;
+    --ink:#12141B;
+    --ink-soft:#4E525C;
+    --ink-faint:#9298A3;
+    --line:#E5E7EB;
+    --line-strong:#D2D5DB;
+
+    --diritto:#33449C;
+    --diritto-soft:#33449C12;
+    --editoria:#0E7368;
+    --editoria-soft:#0E736812;
+    --insegnamento:#6A5AAE;
+    --insegnamento-soft:#6A5AAE12;
+    --neutral-soft:#9298A312;
+
+    --display:"Space Grotesk", "Inter", sans-serif;
+    --sans:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- Top bar ---------- */
+  header.topbar{
+    position:sticky;
+    top:0;
+    z-index:60;
+    background:rgba(255,255,255,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:880px;
+    margin:0 auto;
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .topbar-name{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:14.5px;
+    letter-spacing:-0.01em;
+  }
+  .topbar-name span{color:var(--diritto);}
+  .topbar-nav{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.04em;
+  }
+  .topbar-nav a{
+    text-decoration:none;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    transition:color .15s ease;
+    position:relative;
+  }
+  .topbar-nav a::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-4px;
+    height:1.5px;
+    background:var(--ink);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .2s ease;
+  }
+  .topbar-nav a:hover, .topbar-nav a:focus-visible{color:var(--ink);}
+  .topbar-nav a:hover::after, .topbar-nav a:focus-visible::after{transform:scaleX(1);}
+  .topbar-nav .mobile-hide{display:inline;}
+  @media (max-width:600px){
+    .topbar-nav{gap:16px;}
+    .topbar-nav .mobile-hide{display:none;}
+  }
+
+  /* ---------- Side index rail (signature element) ---------- */
+  .rail{
+    position:fixed;
+    left:36px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:40;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0;
+  }
+  .rail-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    padding:9px 0;
+    position:relative;
+  }
+  .rail-item::before{
+    content:"";
+    width:20px;
+    height:1px;
+    background:var(--line-strong);
+    flex-shrink:0;
+    transition:width .25s ease, background .25s ease;
+  }
+  .rail-item .rail-num{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-faint);
+    letter-spacing:0.02em;
+    transition:color .2s ease;
+    white-space:nowrap;
+    opacity:0;
+    transform:translateX(-4px);
+    transition:opacity .2s ease, transform .2s ease, color .2s ease;
+  }
+  .rail:hover .rail-num{opacity:1; transform:translateX(0);}
+  .rail-item.active::before{width:34px; background:var(--diritto);}
+  .rail-item.active .rail-num{color:var(--ink); opacity:1; transform:translateX(0);}
+  @media (max-width:1220px){
+    .rail{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:104px 0 80px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    margin-bottom:26px;
+  }
+  h1.name{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(2.7rem, 6.2vw, 4.3rem);
+    line-height:1.03;
+    letter-spacing:-0.025em;
+    margin-bottom:16px;
+  }
+  .role-line{
+    font-family:var(--sans);
+    font-weight:500;
+    font-size:clamp(1.05rem, 2vw, 1.3rem);
+    color:var(--ink-soft);
+    margin-bottom:30px;
+    max-width:38ch;
+    letter-spacing:-0.005em;
+  }
+  .thread-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:36px;
+  }
+  .pill{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:7px 12px;
+    border-radius:3px;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+  }
+  .pill.p-diritto{background:var(--diritto-soft); color:var(--diritto);}
+  .pill.p-editoria{background:var(--editoria-soft); color:var(--editoria);}
+  .pill.p-insegnamento{background:var(--insegnamento-soft); color:var(--insegnamento);}
+
+  .hero-lede{
+    max-width:58ch;
+    font-size:1.04rem;
+    color:var(--ink-soft);
+  }
+  .hero-lede strong{color:var(--ink); font-weight:600;}
+
+  /* ---------- Section shell ---------- */
+  section{
+    padding:80px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:46px;
+  }
+  .section-num{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--ink-faint);
+  }
+  h2.section-title{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:1.7rem;
+    letter-spacing:-0.02em;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in-view{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- About / index card ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.35fr 1fr;
+    gap:52px;
+    align-items:start;
+  }
+  @media (max-width:700px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+  .about-text p{
+    color:var(--ink-soft);
+    margin-bottom:17px;
+    font-size:1.01rem;
+  }
+  .about-text p:last-child{margin-bottom:0;}
+
+  .infocard{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .infocard-title{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    padding:16px 22px;
+    border-bottom:1px solid var(--line);
+  }
+  .infocard-row{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:13px 22px;
+    font-size:0.9rem;
+    border-bottom:1px solid var(--line);
+  }
+  .infocard-row:last-child{border-bottom:none;}
+  .infocard-label{
+    color:var(--ink-faint);
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.02em;
+    padding-top:2px;
+    white-space:nowrap;
+  }
+  .infocard-value{
+    text-align:right;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .infocard-value a{
+    color:var(--diritto);
+    text-decoration:none;
+    border-bottom:1px solid var(--diritto);
+  }
+
+  /* ---------- Experience timeline ---------- */
+  .docket{
+    position:relative;
+  }
+  .docket::before{
+    content:"";
+    position:absolute;
+    left:5px;
+    top:6px;
+    bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .entry{
+    display:grid;
+    grid-template-columns:12px 108px 1fr;
+    gap:0 22px;
+    padding:22px 0;
+    position:relative;
+  }
+  .entry + .entry{border-top:1px solid var(--line);}
+  @media (max-width:640px){
+    .entry{grid-template-columns:12px 1fr; row-gap:6px;}
+    .entry-meta{grid-column:2;}
+    .entry-body{grid-column:2;}
+  }
+
+  .entry-marker{
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--line-strong);
+    margin-top:3px;
+    z-index:1;
+  }
+  .entry.thread-diritto .entry-marker{border-color:var(--diritto); background:var(--diritto);}
+  .entry.thread-editoria .entry-marker{border-color:var(--editoria); background:var(--editoria);}
+  .entry.thread-insegnamento .entry-marker{border-color:var(--insegnamento); background:var(--insegnamento);}
+
+  .entry-meta{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    line-height:1.55;
+    padding-top:2px;
+  }
+  .entry-docket-no{
+    color:var(--ink-soft);
+    font-weight:500;
+    margin-bottom:3px;
+    display:block;
+  }
+
+  .entry-role{
+    font-family:var(--display);
+    font-size:1.14rem;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin-bottom:2px;
+  }
+  .entry-org{
+    color:var(--ink-soft);
+    font-size:0.92rem;
+    margin-bottom:11px;
+  }
+  .entry-thread-tag{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:3px;
+    margin-bottom:11px;
+  }
+  .thread-diritto .entry-thread-tag{background:var(--diritto-soft); color:var(--diritto);}
+  .thread-editoria .entry-thread-tag{background:var(--editoria-soft); color:var(--editoria);}
+  .thread-insegnamento .entry-thread-tag{background:var(--insegnamento-soft); color:var(--insegnamento);}
+  .entry-thread-tag.neutral{background:var(--neutral-soft); color:var(--ink-faint);}
+
+  .entry-desc{
+    color:var(--ink-soft);
+    font-size:0.94rem;
+    max-width:56ch;
+  }
+
+  /* ---------- Education ---------- */
+  .edu-list{list-style:none;}
+  .edu-item{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:16px;
+    align-items:baseline;
+    padding:19px 0;
+  }
+  .edu-item + .edu-item{border-top:1px solid var(--line);}
+  .edu-inst{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    margin-bottom:5px;
+  }
+  .edu-title{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.06rem;
+    letter-spacing:-0.005em;
+  }
+  .edu-period{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    white-space:nowrap;
+    text-align:right;
+  }
+  @media (max-width:600px){
+    .edu-item{grid-template-columns:1fr;}
+    .edu-period{text-align:left;}
+  }
+
+  /* ---------- Skills & recognitions ---------- */
+  .split-grid{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:52px;
+  }
+  @media (max-width:700px){
+    .split-grid{grid-template-columns:1fr;}
+  }
+  .skill-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+  }
+  .skill-tag{
+    font-family:var(--mono);
+    font-size:12px;
+    padding:8px 13px;
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--ink-soft);
+  }
+  h3.mini-title{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:20px;
+  }
+  .rec-list{list-style:none;}
+  .rec-item{
+    display:flex;
+    gap:16px;
+    padding:15px 0;
+    font-size:0.93rem;
+    color:var(--ink-soft);
+  }
+  .rec-item + .rec-item{border-top:1px solid var(--line);}
+  .rec-year{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    white-space:nowrap;
+    padding-top:1px;
+  }
+  .rec-item strong{color:var(--ink); font-weight:600;}
+
+  /* ---------- Footer / contact ---------- */
+  footer{
+    padding:76px 0 64px;
+  }
+  .footer-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:28px;
+  }
+  .footer-line{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(1.5rem, 3.3vw, 2.05rem);
+    letter-spacing:-0.02em;
+    max-width:22ch;
+    line-height:1.28;
+  }
+  .footer-links{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .footer-links a{
+    font-family:var(--mono);
+    font-size:12.5px;
+    text-decoration:none;
+    color:var(--ink);
+    padding:9px 16px;
+    border:1px solid var(--line-strong);
+    border-radius:4px;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .footer-links a:hover, .footer-links a:focus-visible{
+    background:var(--ink);
+    color:var(--bg);
+    border-color:var(--ink);
+  }
+  .footer-meta{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-faint);
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    width:100%;
+  }
+
+  :focus-visible{
+    outline:2px solid var(--diritto);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-name">Lorenzo Borsari<span>.</span></span>
+    <ul class="topbar-nav">
+      <li><a href="#profilo">Profilo</a></li>
+      <li><a href="#esperienza">Esperienza</a></li>
+      <li class="mobile-hide"><a href="#formazione">Formazione</a></li>
+      <li class="mobile-hide"><a href="#competenze">Competenze</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Indice sezioni">
+  <a href="#top" class="rail-item" data-target="top"><span class="rail-num">Inizio</span></a>
+  <a href="#profilo" class="rail-item" data-target="profilo"><span class="rail-num">01 — Profilo</span></a>
+  <a href="#esperienza" class="rail-item" data-target="esperienza"><span class="rail-num">02 — Esperienza</span></a>
+  <a href="#formazione" class="rail-item" data-target="formazione"><span class="rail-num">03 — Formazione</span></a>
+  <a href="#competenze" class="rail-item" data-target="competenze"><span class="rail-num">04 — Competenze</span></a>
+  <a href="#contatti" class="rail-item" data-target="contatti"><span class="rail-num">05 — Contatti</span></a>
+</nav>
+
+<main class="wrap">
+
+  <section class="hero" id="top">
+    <p class="hero-eyebrow">Domagnano, San Marino</p>
+    <h1 class="name">Lorenzo Borsari</h1>
+    <p class="role-line">Legal Counsel presso San Marino Innovation — redattore editoriale freelance</p>
+    <div class="thread-pills">
+      <span class="pill p-diritto">Diritto</span>
+      <span class="pill p-editoria">Editoria</span>
+      <span class="pill p-insegnamento">Insegnamento</span>
+    </div>
+    <p class="hero-lede">
+      Giurista di formazione, con pratica forense e un presente da <strong>Legal Counsel</strong>
+      per l'ente per l'innovazione della Repubblica di San Marino. In parallelo, da anni
+      lavora come <strong>redattore editoriale freelance</strong> per case editrici e agenzie
+      letterarie, e in passato ha insegnato diritto, storia e geografia nella scuola
+      primaria e secondaria.
+    </p>
+  </section>
+
+  <section id="profilo">
+    <div class="section-head reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Profilo</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          Il percorso di Lorenzo nasce in Giurisprudenza, all'Alma Mater Studiorum di Bologna,
+          e prosegue con la pratica forense presso lo Studio Daniele, dove ottiene la
+          qualifica di Sostituto Processuale. Da ottobre 2025 mette questa formazione al
+          servizio di San Marino Innovation, occupandosi di consulenza legale nel contesto
+          dell'ecosistema dell'innovazione sammarinese.
+        </p>
+        <p>
+          Accanto al diritto, coltiva da anni una seconda vocazione editoriale: dopo un
+          percorso di formazione professionale in redazione e copywriting presso La Scuola
+          di Editoria, collabora come redattore freelance con diverse case editrici e
+          agenzie letterarie, occupandosi anche di diritti d'autore e digitalizzazione
+          d'archivio.
+        </p>
+        <p>
+          Un terzo filo conduce all'aula: tra il 2022 e il 2024 ha insegnato Diritto ed
+          Educazione Civica, Storia, Geografia e Religione nelle scuole primarie e
+          secondarie di Bologna. Oggi continua ad aggiornarsi tra il Diploma SPISA in
+          Scienze delle Pubbliche Amministrazioni e un percorso IFOA sul bilancio di
+          sostenibilità e la normativa ESG/CSRD.
+        </p>
+      </div>
+      <div class="infocard">
+        <div class="infocard-title">Scheda sintetica</div>
+        <div class="infocard-row">
+          <span class="infocard-label">Ruolo</span>
+          <span class="infocard-value">Legal Counsel</span>
+        </div>
+        <div class="infocard-row">
+          <span class="infocard-label">Ente</span>
+          <span class="infocard-value">San Marino Innovation</span>
+        </div>
+        <div class="infocard-row">
+          <span class="infocard-label">Formazione</span>
+          <span class="infocard-value">Giurisprudenza, UniBo</span>
+        </div>
+        <div class="infocard-row">
+          <span class="infocard-label">In corso</span>
+          <span class="infocard-value">Spec. SPISA, Bologna</span>
+        </div>
+        <div class="infocard-row">
+          <span class="infocard-label">Base</span>
+          <span class="infocard-value">Domagnano, RSM</span>
+        </div>
+        <div class="infocard-row">
+          <span class="infocard-label">LinkedIn</span>
+          <span class="infocard-value"><a href="https://www.linkedin.com/in/lorenzoborsari/" target="_blank" rel="noopener">/in/lorenzoborsari</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="esperienza">
+    <div class="section-head reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Esperienza</h2>
+    </div>
+
+    <div class="docket">
+
+      <div class="entry thread-diritto reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 01</span>
+          ott 2025 — presente<br>11 mesi
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag">Diritto</span>
+          <div class="entry-role">Legal Counsel</div>
+          <div class="entry-org">SANMARINO INNOVATION · tempo pieno</div>
+          <p class="entry-desc">Consulenza legale per l'ente per l'innovazione della Repubblica di San Marino.</p>
+        </div>
+      </div>
+
+      <div class="entry thread-editoria reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 02</span>
+          lug 2024 — presente<br>2 anni 2 mesi
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag">Editoria</span>
+          <div class="entry-role">Redattore editoriale freelance</div>
+          <div class="entry-org">in riga edizioni e literary agency · freelance</div>
+          <p class="entry-desc">Scrittura creativa e lavoro redazionale per casa editrice e agenzia letteraria.</p>
+        </div>
+      </div>
+
+      <div class="entry thread-editoria reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 03</span>
+          nov 2024 — ago 2025<br>10 mesi
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag">Attivismo</span>
+          <div class="entry-role">Attivista</div>
+          <div class="entry-org">CitizenGO · part-time</div>
+          <p class="entry-desc">Attività di scrittura creativa; intervento come relatore su una proposta di legge regionale.</p>
+        </div>
+      </div>
+
+      <div class="entry thread-editoria reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 04</span>
+          ott 2024 — dic 2024<br>3 mesi
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag">Editoria</span>
+          <div class="entry-role">Redattore editoriale freelance</div>
+          <div class="entry-org">Studio Redazionale Maddali &amp; Bruni s.a.s. · part-time</div>
+          <p class="entry-desc">Scrittura creativa e revisione editoriale su incarico.</p>
+        </div>
+      </div>
+
+      <div class="entry thread-editoria reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 05</span>
+          set 2024<br>1 mese · Bologna
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag">Editoria</span>
+          <div class="entry-role">Ufficio diritti</div>
+          <div class="entry-org">Il Portico editoriale · tempo pieno</div>
+          <p class="entry-desc">Riscontri contrattuali sui diritti d'autore e digitalizzazione dell'archivio.</p>
+        </div>
+      </div>
+
+      <div class="entry thread-editoria reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 06</span>
+          mar 2024 — ott 2024<br>8 mesi
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag">Editoria</span>
+          <div class="entry-role">Redattore editoriale freelance</div>
+          <div class="entry-org">Edizioni della Meridiana · part-time</div>
+          <p class="entry-desc">Scrittura creativa e lavoro redazionale su incarico.</p>
+        </div>
+      </div>
+
+      <div class="entry thread-insegnamento reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 07</span>
+          ott 2022 — giu 2024<br>1 anno 9 mesi · Bologna
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag">Insegnamento</span>
+          <div class="entry-role">Docente nella scuola primaria e secondaria</div>
+          <div class="entry-org">Scuole primarie e secondarie, pubbliche e private · tempo pieno</div>
+          <p class="entry-desc">Incarichi di ruolo e supplenze in Diritto ed Educazione Civica, Storia, Geografia e Religione.</p>
+        </div>
+      </div>
+
+      <div class="entry thread-diritto reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 08</span>
+          apr 2021 — ott 2022<br>1 anno 7 mesi · Bologna
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag">Diritto</span>
+          <div class="entry-role">Avvocato praticante</div>
+          <div class="entry-org">Studio Daniele · part-time</div>
+          <p class="entry-desc">Iscritto al Registro dei Praticanti Avvocati; qualifica di Sostituto Processuale.</p>
+        </div>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 09</span>
+          ott 2014 — apr 2021<br>6 anni 7 mesi
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag neutral">Gestione</span>
+          <div class="entry-role">Curatore di patrimoni immobiliari</div>
+          <div class="entry-org">Privati · tempo pieno</div>
+        </div>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-marker"></div>
+        <div class="entry-meta">
+          <span class="entry-docket-no">N. 10</span>
+          gen 2012 — mar 2014<br>2 anni 3 mesi
+        </div>
+        <div class="entry-body">
+          <span class="entry-thread-tag neutral">Studi</span>
+          <div class="entry-role">Steward</div>
+          <div class="entry-org">Noema S.r.l. Unipersonale · part-time</div>
+          <p class="entry-desc">Attività presso centri congressuali durante gli studi universitari.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="formazione">
+    <div class="section-head reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Formazione</h2>
+    </div>
+    <ul class="edu-list reveal">
+      <li class="edu-item">
+        <div>
+          <div class="edu-inst">Alma Mater Studiorum — Università di Bologna</div>
+          <div class="edu-title">Diploma di Specializzazione (DS1) in Scienze delle Pubbliche Amministrazioni — SPISA</div>
+        </div>
+        <div class="edu-period">ott 2025 — presente</div>
+      </li>
+      <li class="edu-item">
+        <div>
+          <div class="edu-inst">IFOA — Training Institute of Corporate Professionals</div>
+          <div class="edu-title">Corso "Bilancio di sostenibilità"</div>
+        </div>
+        <div class="edu-period">set — nov 2025</div>
+      </li>
+      <li class="edu-item">
+        <div>
+          <div class="edu-inst">La Scuola di Editoria</div>
+          <div class="edu-title">Corso "Professione Copywriter"</div>
+        </div>
+        <div class="edu-period">nov — dic 2024</div>
+      </li>
+      <li class="edu-item">
+        <div>
+          <div class="edu-inst">La Scuola di Editoria</div>
+          <div class="edu-title">Formazione professionale per Redattore editoriale</div>
+        </div>
+        <div class="edu-period">nov 2023 — lug 2024</div>
+      </li>
+      <li class="edu-item">
+        <div>
+          <div class="edu-inst">Alma Mater Studiorum — Università di Bologna</div>
+          <div class="edu-title">Laurea in Giurisprudenza</div>
+        </div>
+        <div class="edu-period">—</div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="competenze">
+    <div class="section-head reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Competenze &amp; riconoscimenti</h2>
+    </div>
+    <div class="split-grid reveal">
+      <div>
+        <h3 class="mini-title">Competenze</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Scrittura creativa</span>
+          <span class="skill-tag">Scrittura su commissione</span>
+          <span class="skill-tag">Diritto d'autore</span>
+          <span class="skill-tag">Consulenza legale</span>
+          <span class="skill-tag">Redazione editoriale</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="mini-title">Riconoscimenti &amp; attività</h3>
+        <ul class="rec-list">
+          <li class="rec-item">
+            <span class="rec-year">2025</span>
+            <span>Partecipazione alla presentazione della <strong>riforma normativa di San Marino Innovation</strong> — Sala Montelupo, Domagnano.</span>
+          </li>
+          <li class="rec-item">
+            <span class="rec-year">2025</span>
+            <span>Visita istituzionale sulla <strong>sovranità digitale e cyber intelligence</strong>, con il Presidente e il Direttore di San Marino Innovation.</span>
+          </li>
+          <li class="rec-item">
+            <span class="rec-year">2025</span>
+            <span>Corso <strong>"Sustainability Report"</strong> presso IFOA — standard ESG e normativa CSRD.</span>
+          </li>
+          <li class="rec-item">
+            <span class="rec-year">2024</span>
+            <span>Relatore per CitizenGO sulla proposta di legge regionale <strong>"Culle per la Vita"</strong>.</span>
+          </li>
+          <li class="rec-item">
+            <span class="rec-year">—</span>
+            <span><strong>AI for Work Skill Badge</strong> — Collaborative Work Management Certification, Asana.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <footer>
+      <div class="footer-inner">
+        <p class="footer-line reveal">Tra il diritto e la pagina scritta, sempre con un occhio all'aula.</p>
+        <div class="footer-links reveal">
+          <a href="https://www.linkedin.com/in/lorenzoborsari/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com/lorenzoborsari" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <p class="footer-meta">Lorenzo Borsari · Domagnano, San Marino · sito aggiornato agosto 2026</p>
+      </div>
+    </footer>
+  </section>
+
+</main>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el){ io.observe(el); });
+    } else {
+      els.forEach(function(el){ el.classList.add('in-view'); });
+    }
+
+    var railItems = document.querySelectorAll('.rail-item');
+    var sections = Array.prototype.slice.call(document.querySelectorAll('main section, .hero'));
+    if(railItems.length && sections.length && 'IntersectionObserver' in window){
+      var railIo = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            var id = entry.target.id;
+            railItems.forEach(function(item){
+              item.classList.toggle('active', item.dataset.target === id);
+            });
+          }
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+      sections.forEach(function(sec){ railIo.observe(sec); });
+    }
+  })();
+</script>
+
+</body>
+</html>
