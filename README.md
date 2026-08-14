@@ -1,39 +1,35 @@
 # Lorenzo Borsari
 
-**Legal Counsel & Redattore Editoriale Freelance**
+Legal Counsel & Redattore Editoriale Freelance — Domagnano, San Marino
 
-📍 Domagnano, San Marino
-
-🔗 **Sito web:** [lorenzoborsari.github.io](https://lorenzoborsari.github.io)
+**[→ lorenzoborsari.github.io](https://lorenzoborsari.github.io)**
 
 ---
 
 ## Profilo
 
-Giurista con formazione in Giurisprudenza all'Università di Bologna e pratica forense
+Giurista, formato in Giurisprudenza all'Università di Bologna e con pratica forense
 alle spalle, oggi Legal Counsel presso **San Marino Innovation**, l'ente per
-l'innovazione della Repubblica di San Marino. In parallelo porta avanti un percorso
-professionale nell'editoria come redattore editoriale freelance per diverse case
-editrici e agenzie letterarie.
+l'innovazione della Repubblica di San Marino. Affianca l'attività legale a un percorso
+consolidato come redattore editoriale freelance per case editrici e agenzie letterarie.
 
-Il percorso unisce tre filoni:
-- **Diritto** — pratica forense, consulenza legale, diritto d'autore
-- **Editoria** — redazione, copywriting, scrittura creativa
-- **Insegnamento** — diritto ed educazione civica, storia, geografia nella scuola primaria e secondaria
+Tre filoni definiscono il percorso:
+
+| Ambito | Attività |
+|---|---|
+| **Diritto** | Pratica forense, consulenza legale, diritto d'autore |
+| **Editoria** | Redazione, copywriting, scrittura creativa |
+| **Insegnamento** | Diritto ed educazione civica, storia, geografia — scuola primaria e secondaria |
 
 Attualmente iscritto al Diploma di Specializzazione in Scienze delle Pubbliche
-Amministrazioni (SPISA) di Bologna.
+Amministrazioni (SPISA), Università di Bologna.
 
 ## Esperienza attuale
 
 - **Legal Counsel** — San Marino Innovation *(dal 2025)*
 - **Redattore editoriale freelance** — in riga edizioni e literary agency *(dal 2024)*
 
-## Contatti
+## Profilo completo
 
-- LinkedIn: [linkedin.com/in/lorenzoborsari](https://www.linkedin.com/in/lorenzoborsari/)
-- Sito web: [lorenzoborsari.github.io](https://lorenzoborsari.github.io)
-
----
-
-*Questo repository ospita il sorgente del mio sito web personale, pubblicato tramite GitHub Pages.*
+Curriculum, formazione e riconoscimenti: **[lorenzoborsari.github.io](https://lorenzoborsari.github.io)**
+· [LinkedIn](https://www.linkedin.com/in/lorenzoborsari/)
