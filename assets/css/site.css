@@ -126,19 +126,101 @@ body{margin:0}
 [data-logo-sub]{display:block}
 
 @media (max-width:1319px){ [data-rail]{display:none !important} }
-@media (max-width:1079px){
+
+/* Progressive nav thinning applies only to narrow desktop windows. Below the
+   mobile breakpoint the nav becomes a scrollable strip instead, so every
+   section stays reachable. */
+@media (min-width:881px) and (max-width:1079px){
   [data-nav="formazione"],[data-nav="competenze"]{display:none !important}
 }
-@media (max-width:899px){
+@media (min-width:881px) and (max-width:1023px){
   [data-hero-grid]{grid-template-columns:minmax(0,1fr) !important}
   [data-logo-sub]{display:none !important}
 }
-@media (max-width:859px){ [data-nav="esperienza"]{display:none !important} }
-@media (max-width:759px){
+@media (min-width:881px) and (max-width:959px){ [data-nav="esperienza"]{display:none !important} }
+
+/* ---------------------------------------------------------------------------
+   Mobile. The source markup is a desktop render with inline styles, so these
+   overrides need !important to win against them.
+   --------------------------------------------------------------------------- */
+@media (max-width:880px){
+
+  /* Header ------------------------------------------------------------------
+     display:contents dissolves the controls wrapper so the logo, language
+     picker, theme button and nav all become direct flex children of the
+     topbar and can wrap onto a second row. Previously they were locked into
+     one non-shrinking row and the theme button sat 45px off-screen. */
+  [data-controls]{display:contents !important}
+  [data-topbar]{flex-wrap:wrap !important;gap:8px 10px !important;
+                padding:10px 16px !important;max-width:none !important}
+  [data-logo]{flex:1 1 auto;min-width:0;order:1}
+  [data-langs]{order:2;flex:0 0 auto}
+  [data-theme-btn]{order:3;flex:0 0 auto}
+
+  /* Section links: full-width strip that scrolls sideways under the logo row. */
+  [data-navbar]{order:10;width:100%;overflow-x:auto;overscroll-behavior-x:contain;
+                justify-content:flex-start !important;scrollbar-width:none;
+                -webkit-overflow-scrolling:touch}
+  [data-navbar]::-webkit-scrollbar{display:none}
+  [data-nav]{display:inline-flex !important;align-items:center;flex:0 0 auto;
+             white-space:nowrap;min-height:44px}
+
+  /* Touch targets: 24x33px links are below any usable minimum. */
+  /* 44px is the smallest comfortable touch target; the desktop render gives
+     these 36-38px. */
+  [data-lang-link]{min-width:44px;min-height:44px;display:inline-flex !important;
+                   align-items:center;justify-content:center}
+  [data-theme-btn]{min-width:44px !important;min-height:44px !important}
+  [data-nav]{padding:10px 14px !important}
+
+  /* Spacing: desktop uses 108px of hero padding and 84px section padding,
+     which on a 390px screen is most of a screenful of nothing. */
+  [data-hero-grid]{padding:76px 20px 52px !important;gap:26px !important;
+                   grid-template-columns:minmax(0,1fr) !important}
+  [data-sec]{padding:52px 0 !important}
+  /* The desktop container already insets by 32px; adding more here stacked to
+     48px a side, leaving 294px of readable width on a 390px screen. */
+  [data-container]{padding-left:18px !important;padding-right:18px !important;
+                   max-width:none !important}
+  /* Scoped to the container: unscoped, this outranks [data-hero-grid] on
+     specificity and would strip the hero's own padding too. */
+  [data-container] [data-sec] > div{padding-left:0 !important;padding-right:0 !important}
+
+  /* Typography: 51px headline on a 390px screen, body copy at 14.9px. */
+  h1{font-size:clamp(2rem,8.4vw,2.9rem) !important;line-height:1.07 !important;
+     overflow-wrap:break-word}
+  h2{font-size:clamp(1.45rem,5.8vw,1.9rem) !important;line-height:1.15 !important}
+  [data-sec] p,[data-sec] li,[data-entry] span{font-size:15.5px !important;
+                                               line-height:1.62 !important}
+
+  /* The star layers sit at inset:-10%, so they extend past the viewport and
+     drag the whole document sideways. Clip them at the source rather than
+     hiding overflow on <body>, which would break position:sticky. */
+  [data-stars-wrap]{overflow:hidden}
+
+  /* The Gantt chart has an 860-unit viewBox. Squeezed into 280px its labels
+     become unreadable, so let it keep its size and scroll instead. */
+  [data-gantt-wrap]{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  [data-gantt]{min-width:620px}
+
+  /* Timeline rows: a 148px date column leaves too little for the content. */
+  /* Three children over two columns: without an explicit placement the third
+     auto-flows into the 12px marker column and wraps one word per line. */
+  [data-entry]{grid-template-columns:12px 1fr !important;gap:6px 12px !important}
+  [data-entry] > :nth-child(3){grid-column:2 !important}
   [data-two-col],#competenze [data-two-col]{grid-template-columns:1fr !important}
+
+  [data-logo-sub]{display:block !important}
+  img,svg{max-width:100%}
 }
-@media (max-width:699px){ [data-nav="profilo"]{display:none !important} }
-@media (max-width:639px){ [data-entry]{grid-template-columns:12px 1fr !important} }
+
+@media (max-width:600px){
+  /* At this width the logo subtitle competes with the controls for room. */
+  [data-logo-sub]{display:none !important}
+  [data-hero-grid]{padding:70px 16px 44px !important}
+  [data-container]{padding-left:14px !important;padding-right:14px !important}
+  [data-topbar]{padding:9px 12px !important}
+}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
