@@ -51,6 +51,9 @@
           document.documentElement.setAttribute('data-theme', 'dark');
         }
       } catch (e) {}
+      /* Collapse the mobile menu before first paint. Without the attribute the
+         panel stays expanded, which is the no-JS fallback. */
+      document.documentElement.setAttribute('data-menu', 'closed');
     })();
   </script>
 
@@ -134,26 +137,32 @@
 <span data-logo-sub="" style='font-family: "IBM Plex Mono", monospace; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); white-space: nowrap; display: block;'>Legal Counsel</span>
 </span>
 </a>
-<div data-controls="" style="display: flex; align-items: center; gap: 10px;">
-<nav aria-label="Sezioni" data-navbar="" style='display: flex; align-items: center; gap: 4px; padding: 4px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0;'>
-<a data-nav="profilo" href="#profilo" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Profilo</span></a>
-<a data-nav="esperienza" href="#esperienza" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Esperienza</span></a>
-<a data-nav="formazione" href="#formazione" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Formazione</span></a>
-<a data-nav="competenze" href="#competenze" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Competenze</span></a>
-<a data-nav="contatti" href="#contatti" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Contatti</span></a>
-</nav>
+<nav aria-label="Sezioni" data-navbar="" id="site-nav" style='display: flex; align-items: center; gap: 4px; padding: 4px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0;'>
+<a class="scp0" data-nav="profilo" href="#profilo" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Profilo</span></a>
+<a class="scp0" data-nav="esperienza" href="#esperienza" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Esperienza</span></a>
+<a class="scp0" data-nav="formazione" href="#formazione" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Formazione</span></a>
+<a class="scp0" data-nav="competenze" href="#competenze" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Competenze</span></a>
+<a class="scp0" data-nav="contatti" href="#contatti" style="text-decoration: none; color: var(--ink-soft); padding: 8px 14px; border-radius: 999px; transition: background 0.2s, color 0.2s; display: inline-block; background: transparent;"><span>Contatti</span></a>
+</nav><div data-controls="" style="display: flex; align-items: center; gap: 10px;">
+
 <div data-langs="" style='display: flex; align-items: center; gap: 3px; padding: 4px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: 0.06em; flex-shrink: 0;'>
 <a aria-current="page" data-lang-link="it" href="/" hreflang="it" lang="it" style='cursor: pointer; border: none; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: 0.06em; padding: 7px 10px; border-radius: 999px; background: var(--ink); color: var(--surface); transition: background 0.2s, color 0.2s;;text-decoration:none;display:inline-block;'>IT</a>
 <a data-lang-link="en" href="/en/" hreflang="en" lang="en" style='cursor: pointer; border: none; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: 0.06em; padding: 7px 10px; border-radius: 999px; background: transparent; color: var(--ink-soft); transition: background 0.2s, color 0.2s;;text-decoration:none;display:inline-block;'>EN</a>
 <a data-lang-link="es" href="/es/" hreflang="es" lang="es" style='cursor: pointer; border: none; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: 0.06em; padding: 7px 10px; border-radius: 999px; background: transparent; color: var(--ink-soft); transition: background 0.2s, color 0.2s;;text-decoration:none;display:inline-block;'>ES</a>
 </div>
-<button aria-label="Cambia tema" data-theme-btn="" style="cursor: pointer; display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-soft); flex-shrink: 0; transition: background 0.2s, color 0.2s;" title="Cambia tema" type="button">
+<button aria-label="Cambia tema" class="scp0" data-theme-btn="" style="cursor: pointer; display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-soft); flex-shrink: 0; transition: background 0.2s, color 0.2s;" title="Cambia tema" type="button">
 <svg aria-hidden="true" style="width: 17px; height: 17px;" viewbox="0 0 24 24">
 <g data-icon-sun="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7">
 <circle cx="12" cy="12" r="4.2"></circle>
 <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"></path>
 </g>
 <path d="M20 14.2A8.2 8.2 0 1 1 10.4 4a6.6 6.6 0 0 0 9.6 10.2z" data-icon-moon="" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7" style="display: none;"></path>
+</svg>
+</button>
+<button aria-controls="site-nav" aria-expanded="false" aria-label="Menu delle sezioni" class="scp0" data-menu-btn="" style="cursor: pointer; display: none; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-soft); flex-shrink: 0; transition: background 0.2s, color 0.2s;" title="Menu delle sezioni" type="button">
+<svg aria-hidden="true" style="width: 18px; height: 18px;" viewbox="0 0 24 24">
+<path d="M4 7h16M4 12h16M4 17h16" data-icon-burger="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+<path d="M6 6l12 12M18 6L6 18" data-icon-close="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" style="display: none;"></path>
 </svg>
 </button>
 </div>
@@ -329,11 +338,11 @@
 <text text-anchor="middle" x="831" y="224">2026</text>
 </g>
 <g fill="var(--ink-soft)" font-size="11" letter-spacing="0.04em">
-<text x="0" y="44"><span>DIRITTO</span></text>
-<text x="0" y="82"><span>EDITORIA</span></text>
-<text x="0" y="120"><span>INSEGNAMENTO</span></text>
-<text x="0" y="158"><span>GESTIONE</span></text>
-<text x="0" y="196"><span>STUDI</span></text>
+<text x="0" y="44">DIRITTO</text>
+<text x="0" y="82">EDITORIA</text>
+<text x="0" y="120">INSEGNAMENTO</text>
+<text x="0" y="158">GESTIONE</text>
+<text x="0" y="196">STUDI</text>
 </g>
 <g>
 <rect data-bar="" fill="var(--accent)" height="10" rx="5" style="transform-box: fill-box;transform-origin: left center;" width="72" x="603" y="34"></rect>

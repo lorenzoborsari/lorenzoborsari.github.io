@@ -43,6 +43,65 @@
   }
 
   // -----------------------------------------------------------------------------------------------------------------
+  //  m o b i l e   m e n u
+  // -----------------------------------------------------------------------------------------------------------------
+
+  // The open state lives on <html> rather than on the nav, so one attribute
+  // drives both dropped rows (sections and languages) from CSS alone.
+  function _setMenu(btn, open) {
+    doc.documentElement.setAttribute('data-menu', open ? 'open' : 'closed');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var burger = btn.querySelector('[data-icon-burger]');
+    var close = btn.querySelector('[data-icon-close]');
+    if (burger) burger.style.display = open ? 'none' : '';
+    if (close) close.style.display = open ? '' : 'none';
+  }
+
+  function _menuOpen() {
+    return doc.documentElement.getAttribute('data-menu') === 'open';
+  }
+
+  function _wireMenu() {
+    var btn = doc.querySelector('[data-menu-btn]');
+    var nav = doc.querySelector('[data-navbar]');
+    if (!btn || !nav) return;
+
+    _setMenu(btn, false);
+
+    btn.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      _setMenu(btn, !_menuOpen());
+    });
+
+    // Picking a section or a language is a navigation: the panel has done its
+    // job and would otherwise stay open over the destination.
+    doc.addEventListener('click', function (ev) {
+      if (!_menuOpen()) return;
+      var t = ev.target;
+      if (!t || !t.closest) return;
+      if (t.closest('[data-nav]') || t.closest('[data-lang-link]') || !t.closest('header')) {
+        _setMenu(btn, false);
+      }
+    });
+
+    doc.addEventListener('keydown', function (ev) {
+      if (ev.key !== 'Escape' || !_menuOpen()) return;
+      _setMenu(btn, false);
+      btn.focus();
+    });
+
+    // Above the breakpoint the panel rows go back to being inline topbar items,
+    // so a stale open state would leave the toggle showing a close icon.
+    var mq = window.matchMedia('(max-width: 880px)');
+    var onChange = function () { if (!mq.matches) _setMenu(btn, false); };
+    if (mq.addEventListener) {
+      mq.addEventListener('change', onChange);
+    } else if (mq.addListener) {
+      mq.addListener(onChange);
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------------------
   //  s t a r f i e l d
   // -----------------------------------------------------------------------------------------------------------------
 
@@ -281,6 +340,7 @@
 
   function _init() {
     _wireTheme();
+    _wireMenu();
     _starfield();
     _wireScroll();
     _wireSections();

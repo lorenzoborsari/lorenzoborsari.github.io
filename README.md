@@ -75,6 +75,33 @@ direttamente il markup della lingua interessata. Se i cambiamenti sono frequenti
 e riguardano tutte e tre le lingue, conviene reintrodurre una fonte unica dei
 testi e rigenerare le pagine da quella, invece di editarle in parallelo.
 
+## Menu mobile
+
+Sotto gli 880px la nav delle sezioni e il selettore di lingua non stanno in una
+riga sola: erano una striscia a scorrimento orizzontale che usciva dallo schermo
+e intercettava le swipe laterali. Ora sono due righe a piena larghezza, chiuse
+dietro un pulsante `[data-menu-btn]`.
+
+Sempre sotto gli 880px le righe di *Formazione* si impilano: accoppiavano un
+titolo elastico a una data `white-space: nowrap` in colonna `auto`, e sotto i
+430px circa la data non potendo restringersi allargava l'intero documento.
+
+Lo stato aperto vive su `<html>` come `data-menu="open"`, così un solo attributo
+pilota entrambe le righe da CSS. Lo script inline nel `<head>` scrive
+`data-menu="closed"` prima del primo paint, per evitare che il pannello lampeggi
+aperto al caricamento. Se il JavaScript non gira, l'attributo non c'è e le due
+righe restano visibili impilate: il menu è comunque usabile.
+
+## Diagrammi SVG e testo tradotto
+
+Le etichette dentro un `<svg>` vanno scritte come testo nudo:
+`<text>DIRITTO</text>`, mai `<text><span>DIRITTO</span></text>`. `span` è nella
+lista di breakout del parser HTML per il contenuto straniero: dentro un `<svg>`
+chiude il tag senza segnalare errori, e tutto ciò che segue finisce nel DOM come
+elementi HTML inerti. È così che il diagramma di Gantt aveva perso etichette e
+barre. Vale per `span`, `div`, `p`, `b`, `i`, `strong`, `em`, `sub`, `sup` e gli
+altri della stessa lista.
+
 ## Differenza di comportamento rispetto all'originale
 
 Nel bundle originale il runtime applicava `#dc-root { height: 100% }`. Questo
